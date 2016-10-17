@@ -21,6 +21,7 @@ def nuralFunction(inputData,trainingPara,targetResult):
 def updataPara(tempResult,targetResult,trainingPara,inputData):
     for i in range(len(trainingPara)):
         trainingPara[i] = trainingPara[i] + 0.05*inputData[i]*(targetResult-tempResult)
+        trainingPara[i] = round(trainingPara[i],2)
     return trainingPara
         
 
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     resultData = []
     i = 1
     while(flag):
-        print str(i) + '.the value of W:  ' + str(trainingPara)
+        print 'iteration:'+str(i) + '.the value of W:  ' + str(trainingPara)
         i = i+1
         temp = nuralFunction(inputData,trainingPara,targetResult)
         tempResult = temp[0]
@@ -41,7 +42,7 @@ if __name__ == "__main__":
         print 'after iteration the result is:' +  str(tempResult)
         print '------------------------------'
         if cmp(tempResult,targetResult) == 0:
-            print 'traing finish'
+            print 'training finish'
             flag = False
         else:
             continue
